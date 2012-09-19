@@ -1,3 +1,6 @@
+; AUTHOR - ANDRIUS JANAUSKAS
+; Information technology, 1 course, VU MIF
+
 .model small
 
 .stack 100h
