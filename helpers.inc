@@ -69,7 +69,7 @@ numberToHex proc
      ret
    
 numberToHex endp
-	
+    
 printByteNumber proc
      ; Isspausdint baito dydzio reiksme registre al
      push bx dx
@@ -131,55 +131,55 @@ readByte proc
      ; di - baitu perskaityta
      cmp si, di
      jge __readNewBuffer
-	 jmp __readByte
+     jmp __readByte
    
      __readNewBuffer:
-	     
-		 cmp [fileEnd], 1
-		 je __endProgram
-		 mov ax, 3F00h
+         
+         cmp [fileEnd], 1
+         je __endProgram
+         mov ax, 3F00h
          mov dx, offset fileBuffer
          mov bx, fileHandle
          mov cx, 250
-         int 21h		 
-		 cmp [firstRead], 0
-		 jne __notFirstTimeReading
-		 mov [firstRead], 1
-		 cmp word ptr [fileBuffer], 'ZM'
-		 jne __dontskip200Bytes
-		 mov ax, 4200h
-		 mov bx, fileHandle
-		 mov cx, 0
-		 mov dx, 200h
-		 int 21h
-		 jmp __readNewBuffer
-		 __dontskip200Bytes:
-		 __notFirstTimeReading:
-		     mov di, ax
-		     mov si, 0
-	     	 cmp di, 250
-	    	 jb __EOF
-	    	 jmp __readByte
+         int 21h         
+         cmp [firstRead], 0
+         jne __notFirstTimeReading
+         mov [firstRead], 1
+         cmp word ptr [fileBuffer], 'ZM'
+         jne __dontskip200Bytes
+         mov ax, 4200h
+         mov bx, fileHandle
+         mov cx, 0
+         mov dx, 200h
+         int 21h
+         jmp __readNewBuffer
+         __dontskip200Bytes:
+         __notFirstTimeReading:
+             mov di, ax
+             mov si, 0
+             cmp di, 250
+             jb __EOF
+             jmp __readByte
 
-	 __endProgram:
-	     call endProgram
-	 
+     __endProgram:
+         call endProgram
+     
      __EOF:
          
-		 mov [fileEnd], 1
+         mov [fileEnd], 1
          call closeFile
-	 
+     
      __readByte:
          
          inc [IPc]         ; IPc pakyla 1 kiekvienam bitui
-		 mov al, [fileBuffer + si]
-		 inc si
-		 mov [bufByte], al
+         mov al, [fileBuffer + si]
+         inc si
+         mov [bufByte], al
      
      pop cx bx dx ax
      ret
-	
-readByte endp	
+    
+readByte endp   
 
 prepareFile proc 
      mov bx, 0081h  ;programos paleidimo parametrai rasomi segmente es pradedant 129 (arba 81h) baitu
@@ -211,14 +211,14 @@ prepareFile proc
 
      __fileError:
         
-		 call fileError
+         call fileError
 
      __noErrors:
          
-		 mov fileHandle, ax
+         mov fileHandle, ax
      ret
-  	 
-prepareFile endp	
+     
+prepareFile endp    
 
 closeFile proc 
      mov ax, 3E00h

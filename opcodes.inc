@@ -424,24 +424,24 @@ label opCodes opStruct
     opStruct <t_opStd, kNormal, argNone, argNone> ;FD
     opStruct <t_opEmpty, kExtraOpk, argRegMem8 argNone> ;FE
     opStruct <t_opEmpty, kExtraOpk, argRegMem16, argNone> ;FF
-	
+    
 label grp1Opk word ;80-83
     dw t_opADD, t_opOR, t_opADC, t_opSBB
-	dw t_opAND, t_opSUB, t_opXOR, t_opCMP
+    dw t_opAND, t_opSUB, t_opXOR, t_opCMP
 
 label grp2opk word ;D0-D3
     dw t_opROL, t_opROR, t_opRCL, t_opRCR
-	dw t_opSHL, t_opSHR, t_opSAL, t_opSAR
-	
+    dw t_opSHL, t_opSHR, t_opSAL, t_opSAR
+    
 label grp3opk word ; F6-F7
     dw t_opTEST, t_opTEST, t_opNOT, t_opNEG
-	dw t_opMUL, t_opIMUL, t_opDIV, t_opIDIV
-	
+    dw t_opMUL, t_opIMUL, t_opDIV, t_opIDIV
+    
 label grp4opk word ;FE
     dw t_opINC, t_opDEC, t_opUnknown, t_opUnknown
-	dw t_opUnknown, t_opUnknown, t_opUnknown, t_opUnknown
-	
+    dw t_opUnknown, t_opUnknown, t_opUnknown, t_opUnknown
+    
 label grp5opk word
     dw t_opINC, t_opDEC, t_opCALL, t_opCALLF ;FF
-	dw t_opJMP, t_opJMP, t_opPUSH, t_opUnknown
+    dw t_opJMP, t_opJMP, t_opPUSH, t_opUnknown
     
