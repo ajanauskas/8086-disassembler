@@ -530,7 +530,7 @@
    
      argOffsetPrint proc  
    
-         mov ax, word ptr [seek]
+         mov ax, word ptr [imm]
          cmp bl, argoffs8
          je __argoffs8
          jmp __argoffs16
